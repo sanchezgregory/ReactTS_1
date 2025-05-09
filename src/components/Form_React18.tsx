@@ -1,19 +1,6 @@
-import React, { useReducer } from 'react';
+import React from 'react';
 import type { Sub } from '../types';
-
-interface FormState {
-    inputValues: Sub
-}
-
-type FormReducerAction = {
-    type: "change_value";
-    payload: {
-        input_name: string;
-        input_value: string;
-    }
-} | {
-    type: "clear"
-}
+import useNewSubForm from './hooks/useNewSubForm';
 
 interface Props {
     // Asi se tipa una funcion normal: onNewSub: (sub: Sub) => void 
@@ -23,39 +10,18 @@ interface Props {
     onNewSub: (sub: Sub) => void
 }
 
-const INITIAL_STATE: Sub = {
-    id: '',
-    nick: '',
-    subMonths: 0,
-    avatar: '',
-    description: ''
-}
-
-const formReducer = (state: FormState["inputValues"], action: FormReducerAction) => {
-    switch (action.type) {
-        case 'change_value':
-            return {
-                ...state,
-                [action.payload.input_name]: action.payload.input_value
-            }
-        case 'clear':
-            return INITIAL_STATE
-        default:
-            return state
-    }
-}
-
 const Form_React18: React.FC<Props> = ({onNewSub}) => {
 
     // Reutilizamos el tipado de la interface. usando Sub como tipado, y espificando que el FormState tiene un inputValues de tipo Sub
     // const [inputValues, setInputValues] = useState<FormState["inputValues"]>(INITIAL_STATE)
 
-    const [inputValues, dispatch] = useReducer(formReducer, INITIAL_STATE)
+   // Usamos el hook personalizado
+   const [inputValues, dispatch] = useNewSubForm()
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         onNewSub(inputValues);
-        handleClear();
+        handleClear();// o tambien dispatch({type: 'clear'})
     }
 
     const handleClear = () => {
