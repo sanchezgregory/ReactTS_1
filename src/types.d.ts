@@ -1,5 +1,5 @@
 export interface Sub {
-    id: string
+    id?: string
     nick: string
     subMonths: number
     avatar: string
