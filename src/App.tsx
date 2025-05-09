@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
-import Form from './components/Form'
+import Form from './components/Form_React19'
 import List from './components/List'
 import type { Sub } from './types'
 

@@ -2,7 +2,7 @@ import type { JSX } from "react";
 import type { Sub } from "../types";
 
 interface Props {
-    subs: Sub[],
+    subs: Sub[], // o puede ser tbn: Array<Sub>
     children: React.ReactNode
 }
 
