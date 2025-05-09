@@ -10,9 +10,9 @@ const List: React.FC<Props> = ({subs, children}) => {
 
     console.log('list', subs)
     const renderLIst = (): JSX.Element[] => {
-        return subs.map((sub, index) => {
+        return subs.map((sub) => {
             return (
-                <li key={sub.nick}>
+                <li key={sub.id}>
                     <img src={sub.avatar} alt={sub.nick} />
                     <h2>{sub.nick} (<small>{sub.subMonths} months</small>)</h2>
                     <p>{sub.description?.substring(0, 100)}</p>

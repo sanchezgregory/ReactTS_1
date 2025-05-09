@@ -1,6 +1,7 @@
 export interface Sub {
-  nick: string
-  subMonths: number
-  avatar: string
-  description?: string
+    id: string
+    nick: string
+    subMonths: number
+    avatar: string
+    description?: string
 }
