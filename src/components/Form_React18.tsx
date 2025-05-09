@@ -5,7 +5,15 @@ interface FormState {
     inputValues: Sub
 }
 
-const Form_React18: React.FC = () => {
+interface Props {
+    // Asi se tipa una funcion normal: onNewSub: (sub: Sub) => void 
+    // pero si se trata de una funcion del useState es diferente: 
+    // onNewSub: React.Dispatch<React.SetStateAction<Sub[]>> // <-- Pero esto no se recomienda hacer nunca, por temas de testing y otras cuestiones.
+    // En su lugar se recomienda usar la siguiente forma:
+    onNewSub: (sub: Sub) => void
+}
+
+const Form_React18: React.FC<Props> = ({onNewSub}) => {
 
     // Reutilizamos el tipado de la interface. usando Sub como tipado, y espificando que el FormState tiene un inputValues de tipo Sub
     const [inputValues, setInputValues] = useState<FormState["inputValues"]>({
@@ -17,14 +25,15 @@ const Form_React18: React.FC = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        console.log(inputValues);
+        console.log(inputValues)
+        onNewSub(inputValues)
     }
 
     // Tipado para que el evento sea del tipo correcto. (tanto para input text como textarea)
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setInputValues({
             ...inputValues,
-            [e.target.name]: e.target.value,
+            [e.target.name]: e.target.name === 'subMonths' ? parseInt(e.target.value) : e.target.value,
         })
     }
 
