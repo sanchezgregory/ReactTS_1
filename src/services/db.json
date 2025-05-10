@@ -1,0 +1,19 @@
+{
+    "subs": [
+        {
+            "id": 1, "nick": "John", "months": 3, "profileUrl": "https://i.pravatar.cc/150?u=1", "description": "John is a subscriber"
+        },
+        {
+            "id": 2, "nick": "Jane", "months": 25, "profileUrl": "https://i.pravatar.cc/150?u=2", "description": "Jane is a subscriber"
+        },
+        {
+            "id": 3, "nick": "JohnQ", "months": 12, "profileUrl": "https://i.pravatar.cc/150?u=3", "description": "JohnQ is a subscriber"
+        },
+        {
+            "id": 4, "nick": "Juan", "months": 4, "profileUrl": "https://i.pravatar.cc/150?u=4", "description": "Juan is a subscriber"
+        },
+        {
+            "id": 5, "nick": "Jose", "months": 12, "profileUrl": "https://i.pravatar.cc/150?u=5", "description": "Jose is a subscriber"
+        }
+    ]
+}
